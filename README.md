@@ -4,7 +4,7 @@ Es necesario el manejo de imágenes, diseño y entrenamiento de modelos de Deep 
 
 ## Tabla de Contenidos
 
-1. [Análisis Dataset VinDr-Mammo](#Análisis Dataset VinDr-Mammo.ipynb)
+1. [Análisis Dataset VinDr-Mammo](#Análisis Dataset VinDr-Mammo)
 2. [Uso](#uso)
 3. [Contribución](#contribución)
 4. [Licencia](#licencia)

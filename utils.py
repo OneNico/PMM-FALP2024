@@ -2,9 +2,10 @@ import os
 import pandas as pd
 
 # Definir las rutas a las carpetas donde se encuentran los datasets
-RUTA_VINDR = '/Volumes/m2/Memoria/Datasets/Vindrmammo'
-RUTA_VINCOMPRIMIDO = '/Volumes/m2/Memoria/Datasets/Vincomprimido'
-RUTA_VINCOMPRIMIDOPNG = '/Volumes/m2/Memoria/Datasets/Vincomprimidopng'
+RUTA_VINDR = '/Volumes/m2/Memoria/Code/PMM/Dataset/Vindrmammo'
+RUTA_VINCOMPRIMIDO = '/Volumes/m2/Memoria/Code/PMM/Data Preprocessing/Mini data/Vincomprimido'
+RUTA_VINCOMPRIMIDOPNG = '/Volumes/m2/Memoria/Code/PMM/Data Preprocessing/Mini data/Vincomprimidopng'
+
 
 # Cargar archivos CSV del dataset Vindr
 breast_level_annotations = pd.read_csv(os.path.join(RUTA_VINDR, 'breast-level_annotations.csv'))

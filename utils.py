@@ -13,7 +13,7 @@ finding_annotations = pd.read_csv(os.path.join(RUTA_VINDR, 'finding_annotations.
 metadata = pd.read_csv(os.path.join(RUTA_VINDR, 'metadata.csv'))
 
 # Cargar un archivo CSV del dataset Vincomprimido
-metadatacomprimida = pd.read_csv(os.path.join(RUTA_VINCOMPRIMIDO, 'metacomprimida.csv'))
+metadatacomprimida = pd.read_csv(os.path.join('/Volumes/m2/Memoria/Code/PMM/Dataset', 'metacomprimida.csv'))
 
 # Cargar las imágenes de Vindr
 RUTA_IMAGENES_VINDR = os.path.join(RUTA_VINDR, 'images')

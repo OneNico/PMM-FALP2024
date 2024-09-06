@@ -15,16 +15,16 @@ El flujo de trabajo ha sido diseñado para alimentar a otros equipos de trabajo 
 │   ├── 📂 original/
 │   │   └── 📂 Vindrmammo/
             └── 📂 images/    # Carpeta base de imágenes DICOM originales
-                └── 📂 fff2339ea4b5d2f1792672ba7d52b318/  #Carpeta de un exámen con sus 4 vistas en formato DICOM dentro
+                └── 📂 fff2339ea4b5d2f1792672ba7d52b318/  #Carpeta de un exámen con sus 4 vistas en formato DICOM 
                     └── 5144bf29398269fa2cf8c36b9c6db7f3.dicom
                     └── fe9b6ffe97a3b4b763cf94c9982254beb.dicom
                     └── e4199214f5b40bd40847f5c2aedc44ef.dicom
                     └── f1b6aa1cc6246c2760b882243657212e.dicom
                 └── 📂 ffe7a45f8390f242db3b843762a4a7aa/
                 └── 📂 .../
-            └── finding_annotations.csv
+            └── finding_annotations.csv 
             └── breast-level_annotations.csv
-            └── metadata.csv               
+            └── metadata.csv                
 │   └── 📂 processed/
 │       ├── images_png/               # Imágenes convertidas a PNG
 │       ├── roi_images/               # Imágenes recortadas con las ROI
@@ -36,7 +36,7 @@ El flujo de trabajo ha sido diseñado para alimentar a otros equipos de trabajo 
 │           └── metacomprimida.csv             # Otros CSV procesados o comprimidos
 │
 ├── 📂 notebooks/
-│   ├── Preprocessing_DICOM_to_PNG.ipynb       # Conversión de DICOM a PNG/JPEG
+│   ├── Preprocessing_DICOM_to_PNG.ipynb       # Conversión de DICOM a PNG
 │   ├── ROI_Extraction.ipynb                   # Extracción de ROI
 │   ├── Data_Augmentation.ipynb                # Aumento de datos
 │   └── Dataset_Balancing.ipynb                # Balanceo del dataset
@@ -82,7 +82,7 @@ El flujo de trabajo del preprocesamiento se divide en las siguientes etapas:
 ### 2. Extracción de Regiones de Interés (ROI)
 - **Notebook**: `ROI_Extraction.ipynb`
 - **Descripción**: Se extraen las ROI de las imágenes, utilizando las coordenadas de las cajas delimitadoras en los archivos CSV de anotaciones. Las imágenes resultantes contienen solo las áreas de interés.
-- **Entrada**: Imágenes PNG/JPEG y CSV de anotaciones en `data/processed/`.
+- **Entrada**: Imágenes PNG y CSV de anotaciones en `data/processed/`.
 - **Salida**: Imágenes con las ROI recortadas en `data/processed/roi_images/`.
 
 ### 3. Aumento de Datos
@@ -122,7 +122,7 @@ El flujo de trabajo del preprocesamiento se divide en las siguientes etapas:
 
 Los resultados de cada etapa de preprocesamiento se almacenan en las siguientes carpetas:
 
-- **`data/processed/images_png/`**: Contiene las imágenes convertidas a PNG/JPEG.
+- **`data/processed/images_png/`**: Contiene las imágenes convertidas a PNG.
 - **`data/processed/roi_images/`**: Contiene las imágenes recortadas con las ROI.
 - **`data/processed/augmented_images/`**: Contiene las imágenes aumentadas.
 - **`data/processed/csv/`**: Contiene los archivos CSV actualizados con las anotaciones y coordenadas de las ROI.

@@ -14,7 +14,17 @@ El flujo de trabajo ha sido diseñado para alimentar a otros equipos de trabajo 
 ├── 📂 data/
 │   ├── 📂 original/
 │   │   └── 📂 Vindrmammo/
-            └── 📂 images/                # Imágenes DICOM originales
+            └── 📂 images/    # Carpeta base de imágenes DICOM originales
+                └── 📂 fff2339ea4b5d2f1792672ba7d52b318/  #Carpeta de un exámen con sus 4 vistas en formato DICOM dentro
+                    └── 5144bf29398269fa2cf8c36b9c6db7f3.dicom
+                    └── fe9b6ffe97a3b4b763cf94c9982254beb.dicom
+                    └── e4199214f5b40bd40847f5c2aedc44ef.dicom
+                    └── f1b6aa1cc6246c2760b882243657212e.dicom
+                └── 📂 ffe7a45f8390f242db3b843762a4a7aa/
+                └── 📂 .../
+            └── finding_annotations.csv
+            └── breast-level_annotations.csv
+            └── metadata.csv               
 │   └── 📂 processed/
 │       ├── images_png/               # Imágenes convertidas a PNG
 │       ├── roi_images/               # Imágenes recortadas con las ROI

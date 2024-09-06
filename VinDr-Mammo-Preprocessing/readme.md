@@ -39,3 +39,90 @@ El flujo de trabajo ha sido diseñado para alimentar a otros equipos de trabajo 
 │
 ├── README.md                                  # Este archivo
 └── requirements.txt                           # Dependencias necesarias
+
+
+
+## Requisitos
+
+Para poder ejecutar los Notebooks y scripts de preprocesamiento, asegúrate de instalar las siguientes dependencias. Puedes instalar todo con el archivo `requirements.txt`:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Dependencias:
+- `pydicom`
+- `opencv-python`
+- `numpy`
+- `pandas`
+- `matplotlib`
+- `seaborn`
+
+## Flujo de Trabajo
+
+El flujo de trabajo del preprocesamiento se divide en las siguientes etapas:
+
+### 1. Conversión de DICOM a PNG/JPEG
+- **Notebook**: `Preprocessing_DICOM_to_PNG.ipynb`
+- **Descripción**: Las imágenes DICOM se convierten a formatos más manejables (PNG o JPEG) y se redimensionan a un tamaño adecuado (por ejemplo, 299x299 píxeles).
+- **Entrada**: Imágenes DICOM en `data/original/dicom/`.
+- **Salida**: Imágenes PNG/JPEG en `data/processed/images_png/`.
+
+### 2. Extracción de Regiones de Interés (ROI)
+- **Notebook**: `ROI_Extraction.ipynb`
+- **Descripción**: Se extraen las ROI de las imágenes, utilizando las coordenadas de las cajas delimitadoras en los archivos CSV de anotaciones. Las imágenes resultantes contienen solo las áreas de interés.
+- **Entrada**: Imágenes PNG/JPEG y CSV de anotaciones en `data/processed/`.
+- **Salida**: Imágenes con las ROI recortadas en `data/processed/roi_images/`.
+
+### 3. Aumento de Datos
+- **Notebook**: `Data_Augmentation.ipynb`
+- **Descripción**: Se aplican técnicas de aumento de datos a las imágenes para generar múltiples versiones y mejorar la generalización del modelo (rotaciones, inversiones, ajustes de brillo/contraste, etc.).
+- **Entrada**: Imágenes PNG/JPEG o ROI.
+- **Salida**: Imágenes aumentadas en `data/processed/augmented_images/`.
+
+### 4. Balanceo del Dataset
+- **Notebook**: `Dataset_Balancing.ipynb`
+- **Descripción**: Se ajusta el balance entre las clases aplicando oversampling o undersampling para manejar el desbalance en las categorías (normal, benigno, maligno).
+- **Entrada**: CSV con anotaciones y clases de las imágenes.
+- **Salida**: Dataset balanceado en los archivos CSV.
+
+## Instrucciones de Uso
+
+1. **Clonar el repositorio**:
+
+   ```bash
+   git clone https://github.com/tu-usuario/VinDr-Mammo-Preprocessing.git
+   cd VinDr-Mammo-Preprocessing
+   ```
+
+2. **Instalar las dependencias**:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Ejecutar los Notebooks**: Abre los Notebooks en la carpeta `notebooks/` y ejecuta cada uno según la etapa de preprocesamiento que desees realizar:
+   - Para convertir las imágenes DICOM: Ejecuta `Preprocessing_DICOM_to_PNG.ipynb`.
+   - Para extraer las ROI: Ejecuta `ROI_Extraction.ipynb`.
+   - Para realizar aumento de datos: Ejecuta `Data_Augmentation.ipynb`.
+   - Para balancear el dataset: Ejecuta `Dataset_Balancing.ipynb`.
+
+## Resultados
+
+Los resultados de cada etapa de preprocesamiento se almacenan en las siguientes carpetas:
+
+- **`data/processed/images_png/`**: Contiene las imágenes convertidas a PNG/JPEG.
+- **`data/processed/roi_images/`**: Contiene las imágenes recortadas con las ROI.
+- **`data/processed/augmented_images/`**: Contiene las imágenes aumentadas.
+- **`data/processed/csv/`**: Contiene los archivos CSV actualizados con las anotaciones y coordenadas de las ROI.
+
+
+---
+
+### Citación
+
+
+```
+Nguyen, H. T., Nguyen, H. Q., Pham, H. H., Lam, K., Le, L. T., Dao, M., & Vu, V. (2022). VinDr-Mammo: A large-scale benchmark dataset for computer-aided diagnosis in full-field digital mammography. *medRxiv*. https://doi.org/10.1101/2022.03.07.22272009
+```
+

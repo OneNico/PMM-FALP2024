@@ -13,9 +13,10 @@ El flujo de trabajo ha sido diseñado para alimentar a otros equipos de trabajo 
 │
 ├── 📂 data/
 │   ├── 📂 original/
-│   │   └── dicom/                    # Imágenes DICOM originales
+│   │   └── 📂 Vindrmammo/
+            └── 📂 images/                # Imágenes DICOM originales
 │   └── 📂 processed/
-│       ├── images_png/               # Imágenes convertidas a PNG/JPEG
+│       ├── images_png/               # Imágenes convertidas a PNG
 │       ├── roi_images/               # Imágenes recortadas con las ROI
 │       ├── augmented_images/         # Imágenes aumentadas
 │       └── csv/

@@ -1,4 +1,4 @@
-# 📂 Carpeta `originals`
+# 📂 Carpeta `original`
 
 Esta carpeta está destinada a contener los datos originales del dataset VinDr-Mammo, que debido a su tamaño (~350 GB) no puede ser incluido en este repositorio de GitHub.
 

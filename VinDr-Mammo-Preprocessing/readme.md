@@ -1,11 +1,14 @@
-VinDr-Mammo Preprocessing
-Descripción del Proyecto
-Este repositorio contiene el preprocesamiento de imágenes médicas DICOM del dataset VinDr-Mammo. El objetivo es preparar las imágenes para su posterior clasificación, específicamente para detectar tejido canceroso utilizando modelos de Deep Learning. El preprocesamiento incluye la conversión de imágenes DICOM a formatos más manejables , la extracción de Regiones de Interés (ROI) y el aumento de datos para mejorar la robustez del modelo.
+# VinDr-Mammo Preprocessing
+
+## Descripción del Proyecto
+
+Este repositorio contiene el preprocesamiento de imágenes médicas DICOM del dataset **VinDr-Mammo**. El objetivo es preparar las imágenes para su posterior clasificación, específicamente para detectar tejido canceroso utilizando modelos de Deep Learning. El preprocesamiento incluye la conversión de imágenes DICOM a formatos más manejables (PNG/JPEG), la extracción de Regiones de Interés (ROI) y el aumento de datos para mejorar la robustez del modelo.
 
 El flujo de trabajo ha sido diseñado para alimentar a otros equipos de trabajo que se encargarán de entrenar y evaluar modelos de clasificación basados en las imágenes preprocesadas.
 
-Estructura del Repositorio
+## Estructura del Repositorio
 
+```plaintext
 📂 VinDr-Mammo-Preprocessing
 │
 ├── 📂 data/
@@ -36,5 +39,3 @@ Estructura del Repositorio
 │
 ├── README.md                                  # Este archivo
 └── requirements.txt                           # Dependencias necesarias
-
-

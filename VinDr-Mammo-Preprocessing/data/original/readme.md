@@ -32,7 +32,8 @@ Esta carpeta está destinada a contener los datos originales del dataset VinDr-M
        └── breast-level_annotations.csv
        └── metadata.csv
 
-4. ** Ubicación de los archivos CSV:**
+4. **Ubicación de los archivos CSV:**
+
 
 - **finding_annotations.csv**: Archivo CSV con las anotaciones de hallazgos y coordenadas de las ROI.
 - **breast-level_annotations.csv**: Archivo CSV con las anotaciones a nivel de imagen.

@@ -41,9 +41,6 @@ El flujo de trabajo ha sido diseñado para alimentar a otros equipos de trabajo 
 │   ├── Data_Augmentation.ipynb                # Aumento de datos
 │   └── Dataset_Balancing.ipynb                # Balanceo del dataset
 │
-├── 📂 utils/
-│   └── utils.py                               # Funciones auxiliares
-│
 ├── 📂 results/
 │   ├── 📂 visualizations/                     # Gráficos de resultados
 │   └── performance_report.md                  # Resumen del preprocesamiento

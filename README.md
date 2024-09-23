@@ -15,9 +15,6 @@ El proyecto está organizado en varias carpetas y archivos, cada una dedicada a 
    - Contiene notebooks utilizados para realizar un análisis exploratorio de los datos. En esta etapa, se estudian los datos disponibles, las distribuciones y las características de las imágenes y los metadatos que formarán la base del entrenamiento.
    - Incluye visualizaciones de las mamografías y un análisis del dataset elegido el cual es VinDr-Mammo.
 
-### Referencias
-- Hieu T. Nguyen et al. "A large-scale benchmark dataset for computer-aided diagnosis in full-field digital mammography" – A preprint is available on medRxiv.
-
 
 ### 3. **Model Training and Validation** 
    - Esta carpeta está destinada a contener los scripts y notebooks relacionados con el entrenamiento y validación del modelo de Deep Learning.
@@ -48,6 +45,10 @@ Para ejecutar los scripts de este repositorio, es necesario tener instaladas las
 
 2. **Análisis Exploratorio**:
    - Utiliza los notebooks en la carpeta `Exploratory Data Analysis` para obtener información detallada sobre la calidad de los datos y las características clave.
+
+
+### Referencias
+- Hieu T. Nguyen et al. "A large-scale benchmark dataset for computer-aided diagnosis in full-field digital mammography" – A preprint is available on medRxiv.
 
 
 

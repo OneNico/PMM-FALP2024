@@ -10,6 +10,7 @@ Esta carpeta está destinada a almacenar las imágenes procesadas y los archivos
 Una vez descargado se debe descomprimir y renombrar como "Vindrmammo" y ubicarlo en la carpeta llamada original. Debiese quedar así la estructura:
 
 ```bash
+
 📂 VinDr-Mammo-Preprocessing
 │
 ├── 📂 data/
@@ -26,7 +27,7 @@ Una vez descargado se debe descomprimir y renombrar como "Vindrmammo" y ubicarlo
             └── finding_annotations.csv 
             └── breast-level_annotations.csv
             └── metadata.csv              
-
+```
             
 2. **Ejecución de los notebooks:**
    Una vez que hayas descargado los datos originales, debes ejecutar los notebooks disponibles en la carpeta `notebooks/` para realizar las siguientes tareas:
@@ -63,3 +64,5 @@ Después de ejecutar los notebooks, la estructura de la carpeta `processed/` deb
 │   ├── Generación_de_CSV.ipynb     # Notebook que genera los CSV guardados en la carpeta con ese nombre
 │   ├── Generar_imágenes_Masas.ipynb                   # Copia las imágenes de la carpeta original, las filtra y las guarda en subset_datos
 │   ├── ROI_Mass_Calc.ipynb              # Primeros recortes obtenidos de masas y calcificaciones
+
+```

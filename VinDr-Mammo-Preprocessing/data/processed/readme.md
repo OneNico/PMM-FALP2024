@@ -9,6 +9,7 @@ Esta carpeta está destinada a almacenar las imágenes procesadas y los archivos
 
 Una vez descargado se debe descomprimir y renombrar como "Vindrmammo" y ubicarlo en la carpeta llamada original. Debiese quedar así la estructura:
 
+```bash
 📂 VinDr-Mammo-Preprocessing
 │
 ├── 📂 data/

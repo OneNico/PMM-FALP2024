@@ -53,35 +53,6 @@ El flujo de trabajo ha sido diseñado para alimentar a los otros integrantes del
 
 
 
-## Flujo de Trabajo
-
-El flujo de trabajo del preprocesamiento se divide en las siguientes etapas:
-
-### 1. Conversión de DICOM a PNG/JPEG
-- **Notebook**: `Preprocessing_DICOM_to_PNG.ipynb`
-- **Descripción**: Las imágenes DICOM se convierten a formatos más manejables (PNG o JPEG) y se redimensionan a un tamaño adecuado (por ejemplo, 299x299 píxeles).
-- **Entrada**: Imágenes DICOM en `data/original/dicom/`.
-- **Salida**: Imágenes PNG en `data/processed/images_png/`.
-
-### 2. Extracción de Regiones de Interés (ROI)
-- **Notebook**: `ROI_Extraction.ipynb`
-- **Descripción**: Se extraen las ROI de las imágenes, utilizando las coordenadas de las cajas delimitadoras en los archivos CSV de anotaciones. Las imágenes resultantes contienen solo las áreas de interés.
-- **Entrada**: Imágenes PNG y CSV de anotaciones en `data/processed/`.
-- **Salida**: Imágenes con las ROI recortadas en `data/processed/roi_images/`.
-
-### 3. Aumento de Datos
-- **Notebook**: `Data_Augmentation.ipynb`
-- **Descripción**: Se aplican técnicas de aumento de datos a las imágenes para generar múltiples versiones y mejorar la generalización del modelo (rotaciones, inversiones, ajustes de brillo/contraste, etc.).
-- **Entrada**: Imágenes PNG o ROI.
-- **Salida**: Imágenes aumentadas en `data/processed/augmented_images/`.
-
-### 4. Balanceo del Dataset
-- **Notebook**: `Dataset_Balancing.ipynb`
-- **Descripción**: Se ajusta el balance entre las clases aplicando oversampling o undersampling para manejar el desbalance en las categorías (normal, benigno, maligno).
-- **Entrada**: CSV con anotaciones y clases de las imágenes.
-- **Salida**: Dataset balanceado en los archivos CSV.
-
-
 ### Citación
 
 

@@ -1,6 +1,8 @@
 # PMM-FALP2024
 
-**PMM-FALP2024** es un proyecto que se enmarca en el contexto de las Memorias Multidisciplinarias de la Universidad Técnica Federico Santa María orientado en la clasificación de lesiones en mamografías utilizando modelos de Deep Learning. El objetivo es desarrollar un sistema automatizado que permita identificar regiones sospechosas en las mamografías, para luego clasificarlas en tejido sano o sospechoso. El sistema utiliza un enfoque basado en Machine Learning con el fin de mejorar la precisión y eficiencia en el diagnóstico.
+**Clasificación de Imágenes de
+Mamografía usando Machine Learning
+para la Detección de Tejido Canceroso.** es un proyecto que se enmarca en el contexto de las Memorias Multidisciplinarias de la Universidad Técnica Federico Santa María orientado en la clasificación de lesiones en mamografías utilizando modelos de Deep Learning. El objetivo es desarrollar un sistema automatizado que permita identificar regiones sospechosas en las mamografías, para luego clasificarlas en tejido sano o sospechoso. El sistema utiliza un enfoque basado en Machine Learning con el fin de mejorar la precisión y eficiencia en el diagnóstico.
 
 ## Estructura del Proyecto
 

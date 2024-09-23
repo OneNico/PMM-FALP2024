@@ -2,9 +2,9 @@
 
 ## Descripción del Proyecto
 
-Este repositorio contiene el preprocesamiento de imágenes médicas DICOM del dataset **VinDr-Mammo**. El objetivo es preparar las imágenes para su posterior clasificación, específicamente para detectar tejido canceroso utilizando modelos de Deep Learning. El preprocesamiento incluye la conversión de imágenes DICOM a formatos más manejables (PNG/JPEG), la extracción de Regiones de Interés (ROI) y el aumento de datos para mejorar la robustez del modelo.
+Este repositorio contiene el preprocesamiento de imágenes médicas DICOM del dataset **VinDr-Mammo**. El objetivo es preparar las imágenes para su posterior clasificación, específicamente para detectar tejido canceroso utilizando modelos de Deep Learning. El preprocesamiento incluye la conversión de imágenes DICOM a formatos más manejables como PNG, la extracción de Regiones de Interés (ROI) y el aumento de datos para mejorar la robustez del modelo.
 
-El flujo de trabajo ha sido diseñado para alimentar a otros equipos de trabajo que se encargarán de entrenar y evaluar modelos de clasificación basados en las imágenes preprocesadas.
+El flujo de trabajo ha sido diseñado para alimentar a los otros integrantes del grupo que se encargarán de entrenar y evaluar modelos de clasificación basados en las imágenes preprocesadas.
 
 ## Estructura del Repositorio
 
@@ -42,29 +42,14 @@ El flujo de trabajo ha sido diseñado para alimentar a otros equipos de trabajo 
 │   └── Dataset_Balancing.ipynb                # Balanceo del dataset
 │
 ├── 📂 results/
-│   ├── 📂 visualizations/                     # Gráficos de resultados
-│   └── performance_report.md                  # Resumen del preprocesamiento
+│   ├── visualizations.ipynb/                  # Gráficos de resultados del procesamiento hecho ( pendiente)
+│   
 │
 ├── README.md                                  # Este archivo
-└── requirements.txt                           # Dependencias necesarias
 
 
 
-## Requisitos
 
-Para poder ejecutar los Notebooks y scripts de preprocesamiento, asegúrate de instalar las siguientes dependencias. Puedes instalar todo con el archivo `requirements.txt`:
-
-```bash
-pip install -r requirements.txt
-```
-
-### Dependencias:
-- `pydicom`
-- `opencv-python`
-- `numpy`
-- `pandas`
-- `matplotlib`
-- `seaborn`
 
 ## Flujo de Trabajo
 
@@ -94,38 +79,6 @@ El flujo de trabajo del preprocesamiento se divide en las siguientes etapas:
 - **Entrada**: CSV con anotaciones y clases de las imágenes.
 - **Salida**: Dataset balanceado en los archivos CSV.
 
-## Instrucciones de Uso
-
-1. **Clonar el repositorio**:
-
-   ```bash
-   git clone https://github.com/tu-usuario/VinDr-Mammo-Preprocessing.git
-   cd VinDr-Mammo-Preprocessing
-   ```
-
-2. **Instalar las dependencias**:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Ejecutar los Notebooks**: Abre los Notebooks en la carpeta `notebooks/` y ejecuta cada uno según la etapa de preprocesamiento que desees realizar:
-   - Para convertir las imágenes DICOM: Ejecuta `Preprocessing_DICOM_to_PNG.ipynb`.
-   - Para extraer las ROI: Ejecuta `ROI_Extraction.ipynb`.
-   - Para realizar aumento de datos: Ejecuta `Data_Augmentation.ipynb`.
-   - Para balancear el dataset: Ejecuta `Dataset_Balancing.ipynb`.
-
-## Resultados
-
-Los resultados de cada etapa de preprocesamiento se almacenan en las siguientes carpetas:
-
-- **`data/processed/images_png/`**: Contiene las imágenes convertidas a PNG.
-- **`data/processed/roi_images/`**: Contiene las imágenes recortadas con las ROI.
-- **`data/processed/augmented_images/`**: Contiene las imágenes aumentadas.
-- **`data/processed/csv/`**: Contiene los archivos CSV actualizados con las anotaciones y coordenadas de las ROI.
-
-
----
 
 ### Citación
 

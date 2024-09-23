@@ -30,7 +30,7 @@ El flujo de trabajo ha sido diseñado para alimentar a los otros integrantes del
             ├── 📂 Images_Mass_Calc       # Subset de Imágenes DICOM filtradas con masas y calcificaciones
 │       ├── 📂 roi_images/               # Imágenes recortadas con las ROI
             ├── 📂 ROICROP1           # Primeros recortes obtenidos de masas y calcificaciones
-│       ├── 📂 augmented_images/         # Imágenes aumentadas
+│       ├── 📂 augmented_images/         # Imágenes aumentadas (próximamente)
 │       └── 📂 csv/
 │           ├── combined_annotations_metadata.csv   # CSV de la unión del csv de anotaciones con el de metadata
 │           ├── filtered_mass_calcifications.csv    # similar al anterior pero filtrando masas y calcificaciones

@@ -29,3 +29,9 @@ Todas las imágenes fueron redimensionadas a **227x227 píxeles** para garantiza
 ### Tamaño Total del Dataset
 Después del preprocesamiento y la aumentación, el dataset contiene un total de **24,576 imágenes**.
 
+
+### Cita
+
+Lin, Ting-Yu; Huang, Mei-Ling (2020), “Dataset of Breast mammography images with Masses”, Mendeley Data, V2, doi: [10.17632/ywsbh3ndr8.2](https://doi.org/10.17632/ywsbh3ndr8.2)
+
+

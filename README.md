@@ -24,7 +24,7 @@ El proyecto está organizado en varias carpetas y archivos, cada una dedicada a 
    - Contiene scripts y notebooks que se encargan del preprocesamiento de las imágenes de mamografías. Este módulo convierte las imágenes en formato DICOM a PNG, recorta las regiones de interés (ROI) y aplica técnicas de normalización.
    - Herramientas utilizadas: `pydicom`, `OpenCV`, y `NumPy`.
 
-### 4. **BeningMalignant_Masses-Preprocessing**
+### 5. **BeningMalignant_Masses-Preprocessing**
    - Contiene el set de datos llamado "Dataset of Breast mammography images with Masses" , el cual contiene imágenes de masas tanto beningnas como malignas, ya pre-procesadas.
      
 

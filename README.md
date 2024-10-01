@@ -24,6 +24,9 @@ El proyecto está organizado en varias carpetas y archivos, cada una dedicada a 
    - Contiene scripts y notebooks que se encargan del preprocesamiento de las imágenes de mamografías. Este módulo convierte las imágenes en formato DICOM a PNG, recorta las regiones de interés (ROI) y aplica técnicas de normalización.
    - Herramientas utilizadas: `pydicom`, `OpenCV`, y `NumPy`.
 
+### 4. **VinDr-Mammo-Preprocessing**
+   - Contiene el set de datos llamado "Dataset of Breast mammography images with Masses" , el cual contiene imágenes de masas tanto beningnas como malignas, ya pre-procesadas.
+     
 
 ## Requisitos
 
@@ -50,6 +53,8 @@ Para ejecutar los scripts de este repositorio, es necesario tener instaladas las
 ### Referencias
 - Hieu T. Nguyen et al. "A large-scale benchmark dataset for computer-aided diagnosis in full-field digital mammography" – A preprint is available on medRxiv.
 
+
+- Lin, Ting-Yu; Huang, Mei-Ling (2020), “Dataset of Breast mammography images with Masses”, Mendeley Data, V2, doi: 10.17632/ywsbh3ndr8.2
 
 
 

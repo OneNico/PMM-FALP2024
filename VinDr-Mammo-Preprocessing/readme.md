@@ -28,25 +28,12 @@ El flujo de trabajo ha sido diseñado para alimentar a los otros integrantes del
 │   └── 📂 processed/
 │       ├── 📂 subset_datos/               # Subset de imágenes DICOM con algun filtro del origial Dataset
             ├── 📂 Images_Mass_Calc       # Subset de Imágenes DICOM filtradas con masas y calcificaciones
-│       ├── 📂 roi_images/               # Imágenes recortadas con las ROI
-            ├── 📂 ROICROP1           # Primeros recortes obtenidos de masas y calcificaciones
-│       ├── 📂 augmented_images/         # Imágenes aumentadas (próximamente)
-│       └── 📂 csv/
-│           ├── combined_annotations_metadata.csv   # CSV de la unión del csv de anotaciones con el de metadata
-│           ├── filtered_mass_calcifications.csv    # similar al anterior pero filtrando masas y calcificaciones
-│           ├── filtered_with_image_names.csv       # Añadiendo una nueva columna para las que las imágenes con mas de 1 anotación tengan nombre distinto
-│           └── CROP1.csv          # csv con las nuevas coordenadas de los recortes realizados de masas y calcificaciones.
-│
-├── 📂 notebooks/
-│   ├── Generación_de_CSV.ipynb     # Notebook que genera los CSV guardados en la carpeta con ese nombre
-│   ├── Generar_imágenes_Masas.ipynb                   # Copia las imágenes de la carpeta original, las filtra y las guarda en subset_datos
-│   ├── ROI_Mass_Calc.ipynb              # Primeros recortes obtenidos de masas y calcificaciones
-│ 
-│
-├── 📂 results/
-│   ├── visualizations.ipynb/                  # Gráficos de resultados del procesamiento hecho ( pendiente)
-│   
-│
+            ├── 📂 images_with_other    # Subset de datos DICOM que incluye además de masas y calcificaciones, otros hallazgos.   
+│       ├── 📂 roi_images/               # Carpeta con imágenes recortadas con las ROI
+│       ├── 📂 augmented_images/         # Carpeta con mágenes aumentadas 
+│       └── 📂 csv/    # Carpeta que contiene distintos csv generados de los subset, aumentos o roircrop realziados
+├── 📂 notebooks/ # Carpeta con los distintos notebooks utilizados durante el preprocesamiento del dataset.
+├── 📂 results/ Resultados del proceso realizado
 ├── README.md                                  # Este archivo
 
 ```

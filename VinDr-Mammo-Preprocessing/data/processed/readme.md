@@ -50,19 +50,10 @@ Después de ejecutar los notebooks, la estructura de la carpeta `processed/` deb
 ├── 📂 data/        
 │   └── 📂 processed/
 │       ├── 📂 subset_datos/               # Subset de imágenes DICOM con algun filtro del origial Dataset
-            ├── 📂 Images_Mass_Calc       # Subset de Imágenes DICOM filtradas con masas y calcificaciones
 │       ├── 📂 roi_images/               # Imágenes recortadas con las ROI
-            ├── 📂 ROICROP1           # Primeros recortes obtenidos de masas y calcificaciones
 │       ├── 📂 augmented_images/         # Imágenes aumentadas
-│       └── 📂 csv/
-│           ├── combined_annotations_metadata.csv   # CSV de la unión del csv de anotaciones con el de metadata
-│           ├── filtered_mass_calcifications.csv    # similar al anterior pero filtrando masas y calcificaciones
-│           ├── filtered_with_image_names.csv       # Añadiendo una nueva columna para las que las imágenes con mas de 1 anotación tengan nombre distinto
-│           └── CROP1.csv          # csv con las nuevas coordenadas de los recortes realizados de masas y calcificaciones.
-│
-├── 📂 notebooks/
-│   ├── Generación_de_CSV.ipynb     # Notebook que genera los CSV guardados en la carpeta con ese nombre
-│   ├── Generar_imágenes_Masas.ipynb                   # Copia las imágenes de la carpeta original, las filtra y las guarda en subset_datos
-│   ├── ROI_Mass_Calc.ipynb              # Primeros recortes obtenidos de masas y calcificaciones
+│       └── 📂 csv/                      # csv generados de las imágenes o los recortes
+
+├── 📂 notebooks/                       # Notebooks de algún procesamiento realizado a las imágenes.
 
 ```

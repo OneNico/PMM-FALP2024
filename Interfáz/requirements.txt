@@ -23,7 +23,10 @@ streamlit-option-menu
 streamlit-lottie
 watchdog
 streamlit_toggle
-transformers torch torchvision torchaudio
+transformers
+torch
+torchvision
+torchaudio
 seaborn
 
 #pip install -r requirements.txt

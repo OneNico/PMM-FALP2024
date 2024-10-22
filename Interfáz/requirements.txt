@@ -1,0 +1,31 @@
+# Streamlit para la interfaz de usuario
+streamlit
+# Manejo de archivos DICOM
+pydicom
+# Procesamiento de imágenes
+opencv-python
+Pillow
+scikit-image
+albumentations
+# Manipulaciones numéricas y científicas
+numpy
+scipy
+# Visualización de imágenes
+matplotlib
+# Manejo de datos y estructuras
+pandas
+# Optimización de rendimiento
+joblib
+# Para mostrar barras de progreso y otros elementos interactivos en Streamlit
+tqdm
+# Dependencias opcionales para mejoras en la experiencia del usuario
+streamlit-option-menu
+streamlit-lottie
+watchdog
+streamlit_toggle
+transformers torch torchvision torchaudio
+seaborn
+
+#pip install -r requirements.txt
+# streamlit run app.py
+

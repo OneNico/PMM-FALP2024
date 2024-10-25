@@ -1,0 +1,24 @@
+# requirements.txt
+
+streamlit
+pydicom
+opencv-python
+Pillow
+scikit-image
+albumentations
+numpy
+scipy
+matplotlib
+pandas
+joblib
+tqdm
+streamlit-option-menu
+streamlit-lottie
+watchdog
+streamlit_toggle
+transformers
+torch
+torchvision
+torchaudio
+seaborn
+fpdf

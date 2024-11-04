@@ -16,19 +16,10 @@ Este repositorio se organiza en las siguientes carpetas principales:
 
 ### 1. **App SmartMammo**
    - **Descripción**: Contiene los archivos necesarios para la implementación de la interfaz de usuario de la aplicación Smart Mammo, desarrollada en Streamlit.
-   - **Contenido**:
-     - `src`: Carpeta principal del código de la aplicación, organizada en dos subcarpetas:
-       - `modulos`: Incluye los módulos específicos para la clasificación, procesamiento y generación de reportes de las imágenes.
-       - `ui`: Contiene los componentes de la interfaz de usuario, como el diseño de la barra lateral y los estilos de la app.
-     - `app.py`: Archivo principal para ejecutar la aplicación.
-     - `requirements.txt`: Lista de dependencias necesarias para el funcionamiento de la aplicación.
    - **Propósito**: Facilitar la interacción con el sistema a través de una interfaz intuitiva, permitiendo la carga, visualización, clasificación y reporte de mamografías.
 
 ### 2. **Data Processing**
    - **Descripción**: Incluye scripts y archivos para el preprocesamiento de datos, esenciales para asegurar la calidad de las imágenes y los metadatos antes de entrenar o validar el modelo.
-   - **Contenido**:
-     - `BeningMalignant_Masses-Preprocessing`: Scripts y configuraciones específicas para preprocesar datos de masas benignas y malignas.
-     - `VinDr-Mammo-Preprocessing`: Scripts para el procesamiento del dataset VinDr-Mammo.
    - **Propósito**: Preparar los datos en formato adecuado para el entrenamiento y la inferencia, asegurando consistencia y calidad en el conjunto de datos.
 
 ### 3. **Evaluation and Testing**

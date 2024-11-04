@@ -1,0 +1,10 @@
+streamlit
+Pillow
+transformers
+torch
+pydicom
+numpy
+albumentations
+fpdf
+torchvision
+streamlit_drawable_canvas

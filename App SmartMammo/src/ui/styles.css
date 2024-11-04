@@ -1,0 +1,134 @@
+/* styles.css */
+
+/* Importar la fuente Roboto con pesos adicionales si es necesario */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Configuración general */
+body, h1, h2, h3, h4, h5, h6, p, div {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #f5f7fa; /* Cambiado a un gris muy claro para mayor neutralidad */
+    color: #333333; /* Color de texto principal más oscuro para mejor legibilidad */
+}
+
+/* Estilizado de la barra lateral */
+[data-testid="stSidebar"] {
+    background-color: #1F4E79; /* Azul oscuro */
+    color: #FFFFFF; /* Texto blanco */
+}
+
+[data-testid="stSidebar"] .css-1d391kg,
+[data-testid="stSidebar"] .css-1lcbmhc,
+[data-testid="stSidebar"] .css-10trblm,
+[data-testid="stSidebar"] .css-1y4p8pa {
+    color: #FFFFFF; /* Texto blanco */
+}
+
+[data-testid="stSidebar"] .css-1d391kg a {
+    color: #FFFFFF; /* Enlaces en blanco */
+}
+
+[data-testid="stSidebar"] .css-1d391kg a:hover {
+    color: #AED6F1; /* Azul claro al pasar el cursor */
+}
+
+/* Estilizado de encabezados */
+h1 {
+    color: #1F4E79; /* Azul oscuro */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #1F4E79; /* Azul oscuro */
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Estilizado de botones */
+.stButton > button {
+    background-color: #1F4E79; /* Azul oscuro */
+    color: #FFFFFF; /* Texto blanco */
+    border: none;
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    transition: background-color 0.3s ease; /* Suave transición */
+}
+
+.stButton > button:hover {
+    background-color: #0B3D91; /* Azul más oscuro al pasar el cursor */
+    color: #FFFFFF;
+    border: none;
+}
+
+/* Estilizado de mensajes informativos */
+.css-1cpxqw2 {
+    background-color: #D5D8DC; /* Gris claro */
+    color: #1F4E79; /* Azul oscuro */
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.css-1cpxqw2.e1fqkh3o1 {
+    background-color: #A9DFBF; /* Verde suave */
+    color: #196F3D; /* Verde oscuro */
+}
+
+.css-1cpxqw2.e1fqkh3o4 {
+    background-color: #F9E79F; /* Aqua suave */
+    color: #117A65; /* Aqua oscuro */
+}
+
+.css-1cpxqw2.e1fqkh3o2 {
+    background-color: #F1948A; /* Rojo suave */
+    color: #922B21; /* Rojo oscuro */
+}
+
+/* Estilizado de la barra de progreso */
+.css-1aumxhk {
+    background-color: #D5D8DC; /* Gris claro */
+    border-radius: 5px;
+}
+
+.css-fg4pbf {
+    background-color: #1F4E79; /* Azul oscuro */
+    border-radius: 5px;
+}
+
+/* Estilizado del cargador de archivos */
+.css-16huue1 {
+    background-color: #D5D8DC; /* Gris claro */
+    border: 1px solid #1F4E79; /* Azul oscuro */
+    border-radius: 5px;
+}
+
+/* Estilizado de los inputs de texto */
+.css-1d3z3hw {
+    background-color: #FFFFFF; /* Blanco para inputs */
+    color: #333333; /* Texto oscuro */
+    border: 1px solid #1F4E79; /* Azul oscuro */
+    border-radius: 5px;
+}
+
+/* Estilizado de los separadores */
+hr {
+    border: 1px solid #1F4E79; /* Azul oscuro */
+}
+
+/* Feedback visual para acciones */
+.css-1cpxqw2.success {
+    background-color: #A9DFBF; /* Verde suave */
+    color: #196F3D; /* Verde oscuro */
+}
+
+.css-1cpxqw2.error {
+    background-color: #F1948A; /* Rojo suave */
+    color: #922B21; /* Rojo oscuro */
+}
+
+.css-1cpxqw2.warning {
+    background-color: #F9E79F; /* Aqua suave */
+    color: #117A65; /* Aqua oscuro */
+}

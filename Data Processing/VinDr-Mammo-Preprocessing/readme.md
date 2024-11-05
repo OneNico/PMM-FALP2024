@@ -33,7 +33,6 @@ El flujo de trabajo ha sido diseñado para alimentar a los otros integrantes del
 │       ├── 📂 augmented_images/         # Carpeta con mágenes aumentadas 
 │       └── 📂 csv/    # Carpeta que contiene distintos csv generados de los subset, aumentos o roircrop realziados
 ├── 📂 notebooks/ # Carpeta con los distintos notebooks utilizados durante el preprocesamiento del dataset.
-├── 📂 results/ Resultados del proceso realizado
 ├── README.md                                  # Este archivo
 
 ```

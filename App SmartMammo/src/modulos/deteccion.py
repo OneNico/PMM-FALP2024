@@ -20,7 +20,7 @@ class Detector:
 
     def detectar_objetos(self, image_pil):
         """
-        Realiza la detección de objetos en una imagen PIL y devuelve la imagen con detecciones superpuestas.
+        Realiza la detección de objetos en una imagen PIL y devuelve la imagen con bounding boxes dibujadas.
         """
         if not self.model:
             logger.error("El modelo YOLO no está cargado.")
@@ -43,12 +43,9 @@ class Detector:
                 logger.info("No se encontraron detecciones en la imagen.")
                 return image_pil  # Retornar la imagen original si no hay detecciones
 
-            # Crear una máscara vacía con las mismas dimensiones que la imagen original
-            logger.info("Creando la máscara de detecciones.")
-            mask = Image.new('L', image_pil.size, 0)  # 'L' para modo de imagen en escala de grises
-
-            # Dibujar las cajas delimitadoras en la máscara
-            draw = ImageDraw.Draw(mask)
+            # Crear una copia de la imagen para dibujar las bounding boxes
+            logger.info("Dibujando las bounding boxes sobre la imagen.")
+            draw = ImageDraw.Draw(image_rgb)
 
             # Convertir las cajas a un array de NumPy
             boxes_array = boxes.xyxy.cpu().numpy()  # Convertir a CPU y luego a NumPy
@@ -56,36 +53,13 @@ class Detector:
             for box in boxes_array:
                 # Obtener las coordenadas de la caja y asegurarse de que son enteros
                 x1, y1, x2, y2 = map(int, box[:4])
-                # Dibujar un rectángulo lleno (valor 255) en la máscara
-                draw.rectangle([x1, y1, x2, y2], outline=255, fill=255)
+                # Dibujar el rectángulo de la bounding box
+                draw.rectangle([x1, y1, x2, y2], outline="red", width=5)
 
-            # Superponer la máscara coloreada sobre la imagen original
-            logger.info("Superponiendo la máscara de detecciones sobre la imagen original.")
-            # Convertir la imagen original a modo RGBA
-            image_rgba = image_rgb.convert('RGBA')
-
-            # Crear una imagen del color de la máscara (por ejemplo, rojo semitransparente)
-            mask_color = (255, 0, 0, 100)  # (R, G, B, Alpha)
-
-            # Crear una imagen del color de la máscara con transparencia
-            colored_mask = Image.new('RGBA', image_pil.size, mask_color)
-
-            # Usar la máscara como canal alfa
-            mask_np = np.array(mask)
-            alpha_mask = (mask_np / 255) * mask_color[3]  # Escalar el valor de alfa según la máscara
-
-            # Reemplazar el canal alfa en la máscara coloreada
-            colored_mask.putalpha(Image.fromarray(alpha_mask.astype('uint8')))
-
-            # Superponer la máscara coloreada sobre la imagen original
-            combined = Image.alpha_composite(image_rgba, colored_mask)
-
-            # Convertir de vuelta a RGB si es necesario
-            result_image = combined.convert('RGB')
-
-            logger.info("Detecciones superpuestas exitosamente.")
-            return result_image
+            logger.info("Bounding boxes dibujadas exitosamente.")
+            return image_rgb
 
         except Exception as e:
             logger.error(f"Error durante la detección de objetos: {e}")
             return image_pil
+

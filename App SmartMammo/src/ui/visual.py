@@ -6,11 +6,18 @@ import os
 import logging
 from src.modulos.gestion_dicom import gestionar_dicom
 from src.modulos.procesamiento_m import procesamiento_masivo
+from src.modulos.deteccion import Detector  # Importar el Detector
 
 # Configuración del logger
 logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
 
+# src/ui/visual.py
+
+
+# Inicializar el Detector con el nombre del modelo en Hugging Face
+MODEL_NAME = 'nc7777/detector_lesiones'  # Reemplaza con el nombre de tu repositorio en Hugging Face
+detector = Detector(model_name=MODEL_NAME)
 
 def main():
     # Configurar el título de la página en el navegador
@@ -253,7 +260,7 @@ def main():
     """
     st.markdown(css, unsafe_allow_html=True)
 
-    # HTML para el título "MamoPrioridad AI" centrado
+    # HTML para el título "SMART MAMMO" centrado
     title_html = """
     <div class="outer">
         <div class="dot"></div>
@@ -302,3 +309,10 @@ def main():
         else:
             st.sidebar.info(
                 "Por favor, carga una o más imágenes DICOM, PNG o JPG para realizar el procesamiento masivo.")
+
+    # Agregar una sección para Detección de Objetos (Opcional)
+    st.sidebar.header("Opciones de Detección de Objetos")
+    activar_deteccion = st.sidebar.checkbox("Activar Detección de Objetos", value=False)
+
+    if activar_deteccion:
+        st.sidebar.info("La detección de objetos se realizará sobre las imágenes clasificadas.")

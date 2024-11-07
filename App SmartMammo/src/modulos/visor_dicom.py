@@ -8,11 +8,15 @@ from io import BytesIO
 import logging
 from pydicom.pixels import apply_voi_lut
 import base64
-import json
 
-from src.modulos.procesamiento_i import procesamiento_individual  # Importar la función de procesamiento individual
+from src.modulos.procesamiento_i import procesamiento_individual
+from src.modulos.deteccion import Detector  # Importar el Detector
 
 logger = logging.getLogger(__name__)
+
+# Inicializar el Detector
+MODEL_NAME = 'nc7777/detector_lesiones'
+detector = Detector(model_name=MODEL_NAME)
 
 def visualizar_dicom(opciones):
     st.write("---")
@@ -65,6 +69,7 @@ def mostrar_visor(selected_file, opciones):
         img_base64 = base64.b64encode(buffered.getvalue()).decode()
 
         # HTML y JavaScript para hacer la imagen draggable, zoom, rotación y reset
+        # Utilizamos f-strings y escapamos las llaves dobles para CSS y JS
         draggable_image_html = f"""
         <html>
         <head>
@@ -133,7 +138,7 @@ def mostrar_visor(selected_file, opciones):
                 let translateX = 0, translateY = 0;
                 let scale = 1;
                 let rotation = 0;
-                const imageKey = {json.dumps(selected_file.name)};  // Clave única para cada imagen
+                const imageKey = "{selected_file.name}";  // Clave única para cada imagen
 
                 // Agregar una variable para almacenar las transformaciones iniciales
                 let initialTransformations = {{}};
@@ -282,6 +287,19 @@ def mostrar_visor(selected_file, opciones):
 
         # Mostrar la imagen con funcionalidad de arrastre, zoom, rotación y reset
         st.components.v1.html(draggable_image_html, height=800)  # Ajustar la altura a 800
+
+        # Opciones de Detección de Objetos
+        st.subheader("Detección de Objetos en la Imagen")
+
+        detectar_objetos = st.button("Detectar Objetos", key=f"detectar_{selected_file.name}")
+
+        if detectar_objetos:
+            with st.spinner("Realizando detección de objetos..."):
+                imagen_detectada = detector.detectar_objetos(imagen_editada)
+                if imagen_detectada:
+                    st.image(imagen_detectada, caption="Imagen con Detecciones", use_column_width=True)
+                else:
+                    st.error("No se pudo realizar la detección de objetos.")
 
         # Descargar DICOM modificado y PNG de alta resolución, y botón "Analizar mamografía"
         st.subheader("Descargar Imagen Modificada")

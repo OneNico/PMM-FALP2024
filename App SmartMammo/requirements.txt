@@ -8,3 +8,4 @@ albumentations
 fpdf
 torchvision
 streamlit_drawable_canvas
+ultralytics

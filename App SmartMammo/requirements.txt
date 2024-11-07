@@ -9,3 +9,4 @@ fpdf
 torchvision
 streamlit_drawable_canvas
 ultralytics
+streamlit-image-comparison

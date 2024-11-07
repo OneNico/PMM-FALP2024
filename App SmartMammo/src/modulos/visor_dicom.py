@@ -1,5 +1,3 @@
-# src/modulos/visor_dicom.py
-
 import streamlit as st
 from PIL import Image, ImageEnhance
 import pydicom
@@ -63,12 +61,36 @@ def mostrar_visor(selected_file, opciones):
         # Aplicar ajustes de brillo y contraste
         imagen_editada = ajustar_brillo_contraste(imagen, brillo, contraste)
 
-        # Convertir la imagen a base64 para incrustarla en HTML
-        buffered = BytesIO()
-        imagen_editada.save(buffered, format="PNG")
-        img_base64 = base64.b64encode(buffered.getvalue()).decode()
+        # Inicializar la variable de imagen detectada
+        imagen_detectada = None
 
-        # HTML y JavaScript para hacer la imagen draggable, zoom, rotación y reset
+        # Opciones de Detección de Objetos
+        st.subheader("Detección de Objetos en la Imagen")
+
+        detectar_objetos = st.button("Detectar Objetos", key=f"detectar_{selected_file.name}")
+
+        if detectar_objetos:
+            with st.spinner("Realizando detección de objetos..."):
+                imagen_detectada = detector.detectar_objetos(imagen_editada)
+                if imagen_detectada:
+                    st.success("Detección completada. Puedes comparar las imágenes en el visor.")
+                else:
+                    st.error("No se pudo realizar la detección de objetos.")
+
+        # Convertir las imágenes a base64 para incrustarlas en HTML
+        buffered_original = BytesIO()
+        imagen_editada.save(buffered_original, format="PNG")
+        img_original_base64 = base64.b64encode(buffered_original.getvalue()).decode()
+
+        if imagen_detectada:
+            buffered_detected = BytesIO()
+            imagen_detectada.save(buffered_detected, format="PNG")
+            img_detected_base64 = base64.b64encode(buffered_detected.getvalue()).decode()
+        else:
+            # Si no hay imagen detectada, usar la original
+            img_detected_base64 = img_original_base64
+
+        # HTML y JavaScript para hacer la imagen draggable, zoom, rotación y switch
         # Utilizamos f-strings y escapamos las llaves dobles para CSS y JS
         draggable_image_html = f"""
         <html>
@@ -85,14 +107,19 @@ def mostrar_visor(selected_file, opciones):
                 align-items: center;
                 justify-content: center;
             }}
-            #draggable {{
+            .image-layer {{
                 position: absolute;
-                cursor: grab;
-                user-select: none;
-                transition: transform 0.1s ease;
+                top: 0;
+                left: 0;
                 max-width: none;
                 max-height: none;
                 z-index: 100;
+            }}
+            #imageOriginal {{
+                display: block;
+            }}
+            #imageDetected {{
+                display: none;
             }}
             #controls {{
                 position: absolute;
@@ -111,12 +138,6 @@ def mostrar_visor(selected_file, opciones):
                 cursor: pointer;
                 font-size: 16px;
             }}
-            #canvas {{
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: 200;
-            }}
         </style>
         </head>
         <body>
@@ -127,11 +148,14 @@ def mostrar_visor(selected_file, opciones):
                     <button onclick="rotateLeft()">⟲</button>
                     <button onclick="rotateRight()">⟳</button>
                     <button onclick="resetTransformations()">⎌ Reset</button>
+                    <button onclick="switchImage()">Cambiar Imagen</button>
                 </div>
-                <img id="draggable" src="data:image/png;base64,{img_base64}" draggable="false" />
+                <img id="imageOriginal" class="image-layer" src="data:image/png;base64,{img_original_base64}" draggable="false" />
+                <img id="imageDetected" class="image-layer" src="data:image/png;base64,{img_detected_base64}" draggable="false" />
             </div>
             <script>
-                const img = document.getElementById("draggable");
+                const imgOriginal = document.getElementById("imageOriginal");
+                const imgDetected = document.getElementById("imageDetected");
                 const container = document.getElementById("container");
                 let isDragging = false;
                 let startX, startY;
@@ -140,6 +164,9 @@ def mostrar_visor(selected_file, opciones):
                 let rotation = 0;
                 const imageKey = "{selected_file.name}";  // Clave única para cada imagen
 
+                // Variable para controlar qué imagen se muestra
+                let isOriginalVisible = true;
+
                 // Agregar una variable para almacenar las transformaciones iniciales
                 let initialTransformations = {{}};
 
@@ -147,8 +174,8 @@ def mostrar_visor(selected_file, opciones):
                 function calculateInitialScale() {{
                     const containerWidth = container.clientWidth;
                     const containerHeight = container.clientHeight;
-                    const imgNaturalWidth = img.naturalWidth;
-                    const imgNaturalHeight = img.naturalHeight;
+                    const imgNaturalWidth = imgOriginal.naturalWidth;
+                    const imgNaturalHeight = imgOriginal.naturalHeight;
 
                     const scaleWidth = containerWidth / imgNaturalWidth;
                     const scaleHeight = containerHeight / imgNaturalHeight;
@@ -201,46 +228,53 @@ def mostrar_visor(selected_file, opciones):
                 }}
 
                 // Llamar a loadTransformations al cargar la imagen
-                img.onload = () => {{
+                imgOriginal.onload = () => {{
                     calculateInitialScale();
                     loadTransformations();
                     updateTransform();
                 }};
 
-                img.addEventListener("mousedown", (e) => {{
+                imgOriginal.addEventListener("mousedown", startDragging);
+                imgOriginal.addEventListener("mousemove", duringDragging);
+                imgOriginal.addEventListener("mouseup", stopDragging);
+
+                imgDetected.addEventListener("mousedown", startDragging);
+                imgDetected.addEventListener("mousemove", duringDragging);
+                imgDetected.addEventListener("mouseup", stopDragging);
+
+                // Asegurar que los eventos funcionen también si el ratón sale de la imagen
+                document.addEventListener("mouseup", stopDragging);
+
+                // Prevenir el comportamiento por defecto de arrastre de la imagen
+                imgOriginal.addEventListener("dragstart", (e) => {{
+                    e.preventDefault();
+                }});
+                imgDetected.addEventListener("dragstart", (e) => {{
+                    e.preventDefault();
+                }});
+
+                function startDragging(e) {{
                     isDragging = true;
                     startX = e.clientX - translateX;
                     startY = e.clientY - translateY;
-                    img.style.cursor = "grabbing";
-                }});
+                    this.style.cursor = "grabbing";
+                }}
 
-                img.addEventListener("mousemove", (e) => {{
+                function duringDragging(e) {{
                     if (isDragging) {{
                         translateX = e.clientX - startX;
                         translateY = e.clientY - startY;
                         updateTransform();
                     }}
-                }});
+                }}
 
-                img.addEventListener("mouseup", (e) => {{
+                function stopDragging(e) {{
                     if (isDragging) {{
                         isDragging = false;
-                        img.style.cursor = "grab";
+                        imgOriginal.style.cursor = "grab";
+                        imgDetected.style.cursor = "grab";
                     }}
-                }});
-
-                // Asegurar que los eventos funcionen también si el ratón sale de la imagen
-                document.addEventListener("mouseup", (e) => {{
-                    if (isDragging) {{
-                        isDragging = false;
-                        img.style.cursor = "grab";
-                    }}
-                }});
-
-                // Prevenir el comportamiento por defecto de arrastre de la imagen
-                img.addEventListener("dragstart", (e) => {{
-                    e.preventDefault();
-                }});
+                }}
 
                 function zoomIn() {{
                     scale += 0.1;
@@ -275,8 +309,21 @@ def mostrar_visor(selected_file, opciones):
                     updateTransform();
                 }}
 
+                function switchImage() {{
+                    if (isOriginalVisible) {{
+                        imgOriginal.style.display = "none";
+                        imgDetected.style.display = "block";
+                    }} else {{
+                        imgOriginal.style.display = "block";
+                        imgDetected.style.display = "none";
+                    }}
+                    isOriginalVisible = !isOriginalVisible;
+                }}
+
                 function updateTransform() {{
-                    img.style.transform = `translate(${{translateX}}px, ${{translateY}}px) scale(${{scale}}) rotate(${{rotation}}deg)`;
+                    const transform = `translate(${{translateX}}px, ${{translateY}}px) scale(${{scale}}) rotate(${{rotation}}deg)`;
+                    imgOriginal.style.transform = transform;
+                    imgDetected.style.transform = transform;
                     // Guardar las transformaciones
                     saveTransformations();
                 }}
@@ -285,21 +332,8 @@ def mostrar_visor(selected_file, opciones):
         </html>
         """
 
-        # Mostrar la imagen con funcionalidad de arrastre, zoom, rotación y reset
+        # Mostrar la imagen con funcionalidad de arrastre, zoom, rotación y switch
         st.components.v1.html(draggable_image_html, height=800)  # Ajustar la altura a 800
-
-        # Opciones de Detección de Objetos
-        st.subheader("Detección de Objetos en la Imagen")
-
-        detectar_objetos = st.button("Detectar Objetos", key=f"detectar_{selected_file.name}")
-
-        if detectar_objetos:
-            with st.spinner("Realizando detección de objetos..."):
-                imagen_detectada = detector.detectar_objetos(imagen_editada)
-                if imagen_detectada:
-                    st.image(imagen_detectada, caption="Imagen con Detecciones", use_column_width=True)
-                else:
-                    st.error("No se pudo realizar la detección de objetos.")
 
         # Descargar DICOM modificado y PNG de alta resolución, y botón "Analizar mamografía"
         st.subheader("Descargar Imagen Modificada")
@@ -394,7 +428,7 @@ def procesar_imagen_dicom(dicom_file):
         st.error(f"Error al procesar el archivo DICOM: {e}")
         return None, None, None
 
-def ajustar_brillo_contraste(imagen, brillo, contraste):
+def ajustar_brillo_contraste(imagen, brillo, contraste):    
     try:
         enhancer = ImageEnhance.Brightness(imagen)
         imagen = enhancer.enhance(1 + brillo / 100)
